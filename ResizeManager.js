@@ -1,6 +1,6 @@
 /**
  * Author: Darcey@AllForTheCode.co.uk
- * Date: 20/07/2016
+ * Date: 07/2016
  * Version: 1.0
  * Usage examples: See bottom of this file
  */
@@ -40,6 +40,13 @@ var ResizeManager = (function(){
 	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 	function constructor(){
 		window.addEventListener("resize", resizeHandler);
+		$(window).on("orientationchange", function () {
+			//log("ResizeManager.orientationchange detected");
+			// Delay as orientation change takes time on some devices
+			setTimeout(function () {
+				resizeHandler();
+			}, 500);
+		});
 	}
 	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 	
